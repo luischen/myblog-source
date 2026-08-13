@@ -1,7 +1,7 @@
 ---
 title: "HTTPS 知识索引"
 date: 2026-07-10 14:17:19
-updated: 2026-08-13 15:56:58
+updated: 2026-08-13 16:00:28
 categories:
   - 工作笔记
 tags:
@@ -9,6 +9,8 @@ tags:
   - "Architecture"
 source_path: "10_Architecture/14 架构和开发/Https/README.md"
 ---
+# HTTPS 知识索引
+
 这组笔记按“小专题”拆开，方便单独阅读，也方便后续持续补充。
 
 ## 阅读顺序

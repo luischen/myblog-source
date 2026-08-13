@@ -1,7 +1,7 @@
 ---
 title: "调用外部 HTTPS 服务"
 date: 2026-07-10 14:31:52
-updated: 2026-08-13 15:56:58
+updated: 2026-08-13 16:00:27
 categories:
   - 工作笔记
 tags:
@@ -9,6 +9,8 @@ tags:
   - "Architecture"
 source_path: "10_Architecture/14 架构和开发/Https/05 调用外部Https服务.md"
 ---
+# 调用外部 HTTPS 服务
+
 当 Java 程序调用外部 HTTPS 服务时，如果 JVM 不信任对方证书，就会出现证书链校验失败。
 
 常见报错如下：
@@ -149,4 +151,3 @@ if (requestFactory != null) {
 - 如果希望全局生效，就把 CA 链导入 JVM truststore。
 - 如果只想局部生效，就在客户端里注入自定义 SSL 配置。
 - 如果是长期生产场景，优先考虑稳定的 CA 管理和证书更新流程。
-

@@ -1,7 +1,7 @@
 ---
 title: "Let's Encrypt 与 Nginx 快速部署"
 date: 2026-07-10 14:17:22
-updated: 2026-08-13 15:56:58
+updated: 2026-08-13 16:00:26
 categories:
   - 工作笔记
 tags:
@@ -9,6 +9,8 @@ tags:
   - "Architecture"
 source_path: "10_Architecture/14 架构和开发/Https/04-LetsEncrypt与Nginx快速部署.md"
 ---
+# Let's Encrypt 与 Nginx 快速部署
+
 如果只是想快速把站点切到 HTTPS，最常见的方式是让 Nginx 终止 TLS，然后通过 Let's Encrypt 自动申请和续期证书。
 
 ## 1. 为什么选这个方案
@@ -127,4 +129,3 @@ nginx -t && systemctl reload nginx
 
 - 想看证书结构，去看 [x509 证书与信任链](./02-x509证书与信任链.md)
 - 想看 TLS 连接如何建立，去看 [HTTPS 与 TLS 基础](./01-HTTPS与TLS基础.md)
-
