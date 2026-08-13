@@ -1,7 +1,7 @@
 ---
-title: "PDM业务领域知识笔记"
+title: "PDM业务领域知识"
 date: 2026-06-23 17:07:58
-updated: 2026-06-30 10:38:38
+updated: 2026-08-13 15:49:17
 categories:
   - 工作笔记
 tags:

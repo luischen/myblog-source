@@ -1,7 +1,7 @@
 ---
-title: "PDM技术领域知识笔记"
+title: "PDM技术领域知识"
 date: 2026-06-24 11:44:20
-updated: 2026-06-30 10:46:23
+updated: 2026-08-13 15:49:22
 categories:
   - 工作笔记
 tags:
