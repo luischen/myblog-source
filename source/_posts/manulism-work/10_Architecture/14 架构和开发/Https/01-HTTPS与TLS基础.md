@@ -1,7 +1,7 @@
 ---
 title: "HTTPS 与 TLS 基础"
 date: 2026-07-10 14:17:20
-updated: 2026-07-10 14:17:20
+updated: 2026-08-13 15:56:58
 categories:
   - 工作笔记
 tags:
@@ -9,8 +9,6 @@ tags:
   - "Architecture"
 source_path: "10_Architecture/14 架构和开发/Https/01-HTTPS与TLS基础.md"
 ---
-# HTTPS 与 TLS 基础
-
 HTTPS 可以理解为 `HTTP + TLS`。它解决的不是“更快传输”，而是“更可信、更保密地传输”。
 
 ## 1. HTTPS 解决什么问题
