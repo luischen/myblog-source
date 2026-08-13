@@ -1,0 +1,56 @@
+---
+title: Hello World
+date: 2016-05-26 00:00:00
+---
+Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+
+## Quick Start
+
+### Create a new post
+
+``` bash
+$ hexo new "My New Post"
+```
+
+More info: [Writing](https://hexo.io/docs/writing.html)
+
+### Run server
+
+``` bash
+$ hexo server
+```
+
+More info: [Server](https://hexo.io/docs/server.html)
+
+### Generate static files
+
+``` bash
+$ hexo generate
+```
+
+More info: [Generating](https://hexo.io/docs/generating.html)
+
+### Deploy to remote sites
+
+``` bash
+$ hexo deploy
+```
+
+More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+
+## 问题记录
+
+### 生成的文件目录错乱
+原因是Next主题解析机制是二级目录、三级目录的按级解析，如果文章中出现了跳级的情况就会出现文件目录错乱。修复办法就是使用层层递进的目录定义。
+
+### 修改每页文章数量
+
+在hexo的_config.yml中修改per_page配置项：
+
+```yaml
+index_generator:
+  path: ''
+  per_page: 5
+  order_by: -date
+```
+
