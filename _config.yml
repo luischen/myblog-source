@@ -64,7 +64,7 @@ stylus:
   compress: true
 deploy:
   type: git
-  repo: git@github.com:luischen/luischen.github.io.git
+  repo: https://github.com/luischen/luischen.github.io.git
   branch: master
   #repository: git@github.com:luischen/luischen.github.io.git
 sitemap:
