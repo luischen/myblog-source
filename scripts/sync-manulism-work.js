@@ -5,7 +5,7 @@ const blogRoot = path.resolve(__dirname, '..');
 const knowledgeRoot = process.env.MANULISM_WORK_DIR || 'D:\\knowledgebase\\Manulism Work';
 const outputRoot = path.join(blogRoot, 'source', '_posts', 'manulism-work');
 const categoryName = '工作笔记';
-const includeDirs = ['00_Home', '10_Architecture', '20_Domain_Knowledge', '30_Projects', '40_Templates_Standards'];
+const includeDirs = ['10_Architecture', '20_Domain_Knowledge'];
 const ignoredDirs = new Set(['.git', '.obsidian', '.agents', '.codex', 'node_modules']);
 
 function ensureDir(dir) {

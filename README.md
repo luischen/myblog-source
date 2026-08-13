@@ -94,11 +94,8 @@ npm run deploy
 
 1. 读取 `D:\knowledgebase\Manulism Work`。
 2. 扫描这些目录下的 Markdown 笔记：
-   - `00_Home`
    - `10_Architecture`
    - `20_Domain_Knowledge`
-   - `30_Projects`
-   - `40_Templates_Standards`
 3. 清空并重新生成 `source/_posts/manulism-work`。
 4. 为每篇笔记生成 Hexo front matter。
 5. 将 Obsidian 双链转换为普通 Markdown 链接。
