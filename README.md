@@ -2,7 +2,7 @@
 
 这是 `luischen.github.io` 的 Hexo 博客源码目录。博客使用 Hexo 6 和 Fluid 主题，发布产物通过 `hexo deploy` 推送到 GitHub Pages 仓库。
 
-## Manulism Work 知识库同步
+## 工作笔记知识库同步
 
 `D:\knowledgebase\Manulism Work` 是原始知识库，日常仍在该目录中维护。博客中只保存一份同步后的 Hexo 文章副本，位置是：
 
@@ -20,13 +20,13 @@ scripts/sync-manulism-work.js
 
 ```yaml
 categories:
-  - Manulism Work
+  - 工作笔记
 ```
 
 生成后的分类页路径为：
 
 ```text
-categories/Manulism-Work/
+categories/工作笔记/
 ```
 
 ## 日常维护流程
@@ -60,7 +60,7 @@ npm run server
 ```powershell
 git status
 git add .
-git commit -m "Sync Manulism Work notes"
+git commit -m "Sync work notes"
 ```
 
 发布到 GitHub Pages：

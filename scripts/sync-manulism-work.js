@@ -4,6 +4,7 @@ const path = require('path');
 const blogRoot = path.resolve(__dirname, '..');
 const knowledgeRoot = process.env.MANULISM_WORK_DIR || 'D:\\knowledgebase\\Manulism Work';
 const outputRoot = path.join(blogRoot, 'source', '_posts', 'manulism-work');
+const categoryName = '工作笔记';
 const includeDirs = ['00_Home', '10_Architecture', '20_Domain_Knowledge', '30_Projects', '40_Templates_Standards'];
 const ignoredDirs = new Set(['.git', '.obsidian', '.agents', '.codex', 'node_modules']);
 
@@ -91,17 +92,17 @@ function buildPost(file) {
   const raw = fs.readFileSync(file, 'utf8');
   const parsed = parseFrontMatter(raw);
   const relative = path.relative(knowledgeRoot, file);
-  const top = relative.split(path.sep)[0] || 'Manulism Work';
+  const top = relative.split(path.sep)[0] || categoryName;
   const stat = fs.statSync(file);
   const title = titleFrom(file, parsed.data, parsed.body);
-  const tags = Array.from(new Set(['Manulism Work', top.replace(/^\d+_?/, '').replace(/_/g, ' ')]));
+  const tags = Array.from(new Set([categoryName, top.replace(/^\d+_?/, '').replace(/_/g, ' ')]));
   const frontMatter = [
     '---',
     `title: ${yamlString(title)}`,
     `date: ${formatDate(stat.birthtime || stat.mtime)}`,
     `updated: ${formatDate(stat.mtime)}`,
     'categories:',
-    '  - Manulism Work',
+    `  - ${categoryName}`,
     'tags:',
     ...tags.map((tag) => `  - ${yamlString(tag)}`),
     `source_path: ${yamlString(relative.replace(/\\/g, '/'))}`,

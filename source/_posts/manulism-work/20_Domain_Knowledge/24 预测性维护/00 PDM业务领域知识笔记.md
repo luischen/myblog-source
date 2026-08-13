@@ -3,9 +3,9 @@ title: "PDM业务领域知识笔记"
 date: 2026-06-23 17:07:58
 updated: 2026-06-30 10:38:38
 categories:
-  - Manulism Work
+  - 工作笔记
 tags:
-  - "Manulism Work"
+  - "工作笔记"
   - "Domain Knowledge"
 source_path: "20_Domain_Knowledge/24 预测性维护/00 PDM业务领域知识笔记.md"
 ---

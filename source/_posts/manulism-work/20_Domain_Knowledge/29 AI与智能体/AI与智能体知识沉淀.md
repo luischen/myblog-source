@@ -3,9 +3,9 @@ title: "AI 与智能体基础知识沉淀"
 date: 2026-06-16 19:48:10
 updated: 2026-07-01 10:55:47
 categories:
-  - Manulism Work
+  - 工作笔记
 tags:
-  - "Manulism Work"
+  - "工作笔记"
   - "Domain Knowledge"
 source_path: "20_Domain_Knowledge/29 AI与智能体/AI与智能体知识沉淀.md"
 ---

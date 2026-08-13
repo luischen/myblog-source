@@ -3,9 +3,9 @@ title: "HTTPS 知识索引"
 date: 2026-07-10 14:17:19
 updated: 2026-07-10 14:32:02
 categories:
-  - Manulism Work
+  - 工作笔记
 tags:
-  - "Manulism Work"
+  - "工作笔记"
   - "Architecture"
 source_path: "10_Architecture/14 架构和开发/Https/README.md"
 ---

@@ -3,9 +3,9 @@ title: "HTTPS 与 TLS 基础"
 date: 2026-07-10 14:17:20
 updated: 2026-07-10 14:17:20
 categories:
-  - Manulism Work
+  - 工作笔记
 tags:
-  - "Manulism Work"
+  - "工作笔记"
   - "Architecture"
 source_path: "10_Architecture/14 架构和开发/Https/01-HTTPS与TLS基础.md"
 ---
