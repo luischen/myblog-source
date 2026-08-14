@@ -1,0 +1,148 @@
+# Butterfly theme overrides for this blog.
+
+nav:
+  logo:
+  display_title: true
+  display_post_title: true
+  fixed: false
+
+menu:
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  分类: /categories/ || fas fa-folder-open
+  标签: /tags/ || fas fa-tags
+  关于: /about/ || fas fa-user
+
+favicon: /favicon.ico
+
+avatar:
+  img: /img/fluid.png
+  effect: false
+
+disable_top_img: false
+default_top_img:
+index_img:
+archive_img:
+tag_img:
+category_img:
+footer_img: false
+background:
+
+cover:
+  index_enable: false
+  aside_enable: false
+  archives_enable: false
+  default_cover:
+
+subtitle:
+  enable: true
+  effect: true
+  source: false
+  sub:
+    - Code Build the Future
+    - 工业知识、系统架构与工作笔记
+
+index_layout: 4
+index_post_content:
+  method: 3
+  length: 240
+
+post_meta:
+  page:
+    date_type: created
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+  post:
+    position: left
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+
+toc:
+  post: true
+  page: false
+  number: true
+  expand: false
+  style_simple: false
+  scroll_percent: true
+
+post_copyright:
+  enable: false
+
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: false
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: 工业智能平台与技术知识沉淀
+    button:
+      enable: false
+  card_announcement:
+    enable: false
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+    sort_order:
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+    sort_order:
+  card_tags:
+    enable: true
+    limit: 24
+    color: false
+    orderby: length
+    order: 1
+    sort_order:
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+    sort_order:
+  card_webinfo:
+    enable: false
+
+footer:
+  owner:
+    enable: true
+    since: 2022
+  custom_text:
+  copyright: true
+
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: false
+
+search:
+  use: local_search
+  placeholder: 搜索文章
+  local_search:
+    preload: false
+    top_n_per_article: 1
+    unescape: false
+    pagination:
+      enable: false
+      hitsPerPage: 8
+    CDN:
+
+mermaid:
+  enable: false
+
+pjax:
+  enable: false

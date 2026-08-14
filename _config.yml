@@ -59,7 +59,7 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
-theme: fluid
+theme: butterfly
 stylus:
   compress: true
 deploy:
