@@ -5,8 +5,8 @@ updated: 2026-08-14 11:44:23
 categories:
   - 工作笔记
 tags:
-  - "工作笔记"
-  - "Architecture"
+  - "架构和开发"
+  - "Https"
 source_path: "10_Architecture/14 架构和开发/Https/05 调用外部Https服务.md"
 ---
 # 调用外部 HTTPS 服务

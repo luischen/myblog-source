@@ -5,8 +5,7 @@ updated: 2026-08-14 11:44:32
 categories:
   - 工作笔记
 tags:
-  - "工作笔记"
-  - "Domain Knowledge"
+  - "预测性维护"
 source_path: "20_Domain_Knowledge/24 预测性维护/01 PDM技术领域知识笔记.md"
 ---
 本文重点说明系统如何支撑业务落地。本文只展开架构和关键技术实现，其他算法、聚合策略和局部实现不再细写，便于后续继续补充。

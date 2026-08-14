@@ -5,8 +5,8 @@ updated: 2026-08-14 11:44:20
 categories:
   - 工作笔记
 tags:
-  - "工作笔记"
-  - "Architecture"
+  - "架构和开发"
+  - "Https"
 source_path: "10_Architecture/14 架构和开发/Https/01-HTTPS与TLS基础.md"
 ---
 # HTTPS 与 TLS 基础

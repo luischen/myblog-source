@@ -65,6 +65,21 @@ function titleFrom(file, frontMatter, body) {
   return path.basename(file, '.md');
 }
 
+function cleanTagName(name) {
+  return name
+    .replace(/^\d+[_\s-]*/, '')
+    .replace(/_/g, ' ')
+    .trim();
+}
+
+function tagsFromRelativePath(relative) {
+  const dirs = path.dirname(relative).split(path.sep).filter(Boolean);
+  const contentDirs = dirs.slice(1);
+  if (contentDirs.length === 0) return [];
+  const selectedDirs = contentDirs.length >= 2 ? contentDirs.slice(-2) : contentDirs;
+  return Array.from(new Set(selectedDirs.map(cleanTagName).filter(Boolean)));
+}
+
 function normalizeLinkTarget(target) {
   return target
     .replace(/\\/g, '/')
@@ -93,10 +108,9 @@ function buildPost(file) {
   const raw = fs.readFileSync(file, 'utf8');
   const parsed = parseFrontMatter(raw);
   const relative = path.relative(knowledgeRoot, file);
-  const top = relative.split(path.sep)[0] || categoryName;
   const stat = fs.statSync(file);
   const title = titleFrom(file, parsed.data, parsed.body);
-  const tags = Array.from(new Set([categoryName, top.replace(/^\d+_?/, '').replace(/_/g, ' ')]));
+  const tags = tagsFromRelativePath(relative);
   const frontMatter = [
     '---',
     `title: ${yamlString(title)}`,

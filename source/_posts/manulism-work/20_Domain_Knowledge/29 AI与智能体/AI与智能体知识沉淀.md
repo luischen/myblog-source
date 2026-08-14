@@ -5,8 +5,7 @@ updated: 2026-08-14 11:47:16
 categories:
   - 工作笔记
 tags:
-  - "工作笔记"
-  - "Domain Knowledge"
+  - "AI与智能体"
 source_path: "20_Domain_Knowledge/29 AI与智能体/AI与智能体知识沉淀.md"
 ---
 ## 阅读导引
