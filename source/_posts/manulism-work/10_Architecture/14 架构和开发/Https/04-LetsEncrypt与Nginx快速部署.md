@@ -1,7 +1,7 @@
 ---
-title: "Let's Encrypt 与 Nginx 快速部署"
+title: "Let's Encrypt 与 Nginx HTTPS 快速部署"
 date: 2026-07-10 14:17:22
-updated: 2026-08-13 16:00:26
+updated: 2026-08-14 11:44:22
 categories:
   - 工作笔记
 tags:

@@ -34,6 +34,7 @@ function walk(dir) {
 }
 
 function parseFrontMatter(text) {
+  text = text.replace(/^\uFEFF/, '');
   if (!text.startsWith('---')) return { data: {}, body: text };
   const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) return { data: {}, body: text };

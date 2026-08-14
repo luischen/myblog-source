@@ -1,7 +1,7 @@
 ---
-title: "HTTPS 知识索引"
+title: "HTTPS、TLS 与 x509 专题索引"
 date: 2026-07-10 14:17:19
-updated: 2026-08-13 16:00:28
+updated: 2026-08-14 11:44:23
 categories:
   - 工作笔记
 tags:

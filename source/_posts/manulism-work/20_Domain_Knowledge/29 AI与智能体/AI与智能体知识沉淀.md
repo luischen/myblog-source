@@ -1,7 +1,7 @@
 ---
 title: "AI 与智能体基础知识沉淀"
 date: 2026-06-16 19:48:10
-updated: 2026-07-01 10:55:47
+updated: 2026-08-14 11:47:16
 categories:
   - 工作笔记
 tags:
@@ -30,14 +30,17 @@ source_path: "20_Domain_Knowledge/29 AI与智能体/AI与智能体知识沉淀.m
 
 ChatBI 类系统要稳定落地，需要在数据库和自然语言之间建立语义层：
 
-```mermaid
-flowchart LR
-  User[用户问题] --> LLM[意图理解]
-  LLM --> Semantic[指标/维度语义层]
-  Semantic --> Query[查询生成]
-  Query --> DB[数据库]
-  DB --> Result[结果解释与图表]
-```
+<div style="margin: 18px 0; padding: 16px; border: 1px solid #cbd5e1; border-radius: 10px; background: #f8fafc;">
+  <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; align-items: stretch;">
+    <div style="padding: 12px; border: 1px solid #bfdbfe; border-radius: 8px; background: #eff6ff;"><strong>用户问题</strong><br><span style="color: #475569;">自然语言输入</span></div>
+    <div style="padding: 12px; border: 1px solid #99f6e4; border-radius: 8px; background: #ecfdf5;"><strong>意图理解</strong><br><span style="color: #475569;">识别查询目标</span></div>
+    <div style="padding: 12px; border: 1px solid #fde68a; border-radius: 8px; background: #fffbeb;"><strong>指标 / 维度语义层</strong><br><span style="color: #475569;">统一业务口径</span></div>
+    <div style="padding: 12px; border: 1px solid #ddd6fe; border-radius: 8px; background: #f5f3ff;"><strong>查询生成</strong><br><span style="color: #475569;">生成受控查询</span></div>
+    <div style="padding: 12px; border: 1px solid #fecaca; border-radius: 8px; background: #fef2f2;"><strong>数据库</strong><br><span style="color: #475569;">执行查询</span></div>
+    <div style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #ffffff;"><strong>结果解释与图表</strong><br><span style="color: #475569;">返回可理解结论</span></div>
+  </div>
+  <div style="margin-top: 10px; color: #64748b; text-align: center; font-weight: 700;">用户问题 → 意图理解 → 语义层约束 → 查询生成 → 数据库 → 结果解释</div>
+</div>
 
 如果缺少语义层，模型直接生成 SQL 会带来字段歧义、指标口径不一致、权限和安全问题。
 
@@ -70,4 +73,3 @@ OneNote 中多次讨论了分层智能体/多智能体：主智能体负责协�
 - 专用模型：曲线异常、质量诊断、预测维护。
 
 工业 AI 平台不应只依赖一个大模型，而应采用“LLM + 检索 + 专用模型 + 工具”的组合。
-

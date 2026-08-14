@@ -1,7 +1,7 @@
 ---
-title: "调用外部 HTTPS 服务"
+title: "Java 调用外部 HTTPS 服务与证书信任处理"
 date: 2026-07-10 14:31:52
-updated: 2026-08-13 16:00:27
+updated: 2026-08-14 11:44:23
 categories:
   - 工作笔记
 tags:
