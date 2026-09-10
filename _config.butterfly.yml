@@ -21,7 +21,9 @@ avatar:
 
 disable_top_img: false
 default_top_img:
-index_img:
+index_img: /img/home-hero.png
+index_site_info_top: 47%
+index_top_img_height: 42vh
 archive_img:
 tag_img:
 category_img:
@@ -146,3 +148,8 @@ mermaid:
 
 pjax:
   enable: false
+
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
+  bottom:
