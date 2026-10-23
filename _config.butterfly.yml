@@ -143,8 +143,12 @@ search:
       hitsPerPage: 8
     CDN:
 
+math:
+  use: mathjax
+  per_page: true
+
 mermaid:
-  enable: false
+  enable: true
 
 pjax:
   enable: false

@@ -99,6 +99,90 @@ function convertObsidianLinks(body) {
   });
 }
 
+function convertInlineMath(line) {
+  let result = '';
+  let codeTicks = 0;
+  for (let i = 0; i < line.length;) {
+    if (line[i] === '`') {
+      let end = i;
+      while (line[end] === '`') end += 1;
+      const ticks = end - i;
+      codeTicks = codeTicks === 0 ? ticks : (codeTicks === ticks ? 0 : codeTicks);
+      result += line.slice(i, end);
+      i = end;
+      continue;
+    }
+    if (codeTicks === 0 && line[i] === '$' && line[i - 1] !== '\\' && line[i + 1] !== '$') {
+      let end = i + 1;
+      while (end < line.length && (line[end] !== '$' || line[end - 1] === '\\')) end += 1;
+      const formula = line.slice(i + 1, end);
+      if (end < line.length && formula.trim() && !/^\s|\s$/.test(formula)) {
+        // Marked consumes Markdown escapes inside inline HTML; keep TeX escapes intact.
+        const safeFormula = formula.replace(/\\([\\`*_{}\[\]()#+\-.!|>%$])/g, '\\\\$1');
+        result += `<script type="math/tex">${safeFormula}</script>`;
+        i = end + 1;
+        continue;
+      }
+    }
+    result += line[i];
+    i += 1;
+  }
+  return result;
+}
+
+function convertObsidianSyntax(body) {
+  const lines = body.replace(/\r\n/g, '\n').split('\n');
+  const result = [];
+  const calloutTypes = {
+    abstract: 'info', caution: 'danger', danger: 'danger', error: 'danger',
+    failure: 'danger', important: 'warning', note: 'info', question: 'warning',
+    success: 'success', tip: 'success', warning: 'warning'
+  };
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const fence = line.match(/^ {0,3}(`{3,}|~{3,})([^\s`~]*)/);
+    if (fence) {
+      const closing = new RegExp(`^ {0,3}${fence[1][0]}{${fence[1].length},}\\s*$`);
+      let end = i + 1;
+      while (end < lines.length && !closing.test(lines[end])) end += 1;
+      if (end < lines.length && fence[2].toLowerCase() === 'mermaid') {
+        result.push('{% mermaid %}', ...lines.slice(i + 1, end), '{% endmermaid %}');
+      } else {
+        result.push(...lines.slice(i, Math.min(end + 1, lines.length)));
+      }
+      i = Math.min(end, lines.length - 1);
+      continue;
+    }
+
+    if (line.trim() === '$$') {
+      let end = i + 1;
+      while (end < lines.length && lines[end].trim() !== '$$') end += 1;
+      if (end < lines.length) {
+        result.push('<script type="math/tex; mode=display">', ...lines.slice(i + 1, end), '</script>');
+        i = end;
+        continue;
+      }
+    }
+
+    const callout = line.match(/^>\s*\[!([A-Za-z]+)\][+-]?\s*(.*)$/);
+    if (callout) {
+      const type = calloutTypes[callout[1].toLowerCase()] || 'info';
+      const content = [];
+      while (i + 1 < lines.length && /^>/.test(lines[i + 1])) {
+        i += 1;
+        content.push(lines[i].replace(/^> ?/, ''));
+      }
+      const title = callout[2].trim() || callout[1];
+      result.push(`{% note ${type} %}`, `**${title}**`, convertObsidianSyntax(content.join('\n')), '{% endnote %}');
+      continue;
+    }
+
+    result.push(convertInlineMath(line));
+  }
+  return result.join('\n');
+}
+
 function stripUnsupportedHtml(body) {
   // Hexo allows inline HTML. Keep authored diagrams as-is.
   return body;
@@ -124,7 +208,7 @@ function buildPost(file) {
     '---',
     ''
   ].join('\n');
-  const body = stripUnsupportedHtml(convertObsidianLinks(parsed.body)).trimStart();
+  const body = stripUnsupportedHtml(convertObsidianSyntax(convertObsidianLinks(parsed.body))).trimStart();
   return frontMatter + body + (body.endsWith('\n') ? '' : '\n');
 }
 
@@ -152,4 +236,6 @@ function main() {
   console.log(`Synced ${count} Manulism Work notes to ${path.relative(blogRoot, outputRoot)}`);
 }
 
-main();
+module.exports = { buildPost, convertObsidianSyntax };
+
+if (require.main === module) main();
