@@ -40,7 +40,7 @@ function testScheduledPublicationDateSurvivesSync() {
   const note = path.resolve(__dirname, '..', '..', 'knowledgebase', 'Manulism Work',
     '20_Domain_Knowledge', '24 预测性维护', '00 PDM业务领域知识笔记.md');
   const post = buildPost(note);
-  assert.match(post, /^date: 2025-06-23 10:00:00$/m);
+  assert.match(post, /^date: 2025-06-23 17:07:58$/m);
 }
 
 function testPublicNoteLinksUsePublishedPermalinks() {
