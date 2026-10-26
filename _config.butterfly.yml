@@ -16,17 +16,17 @@ menu:
 favicon: /favicon.ico
 
 avatar:
-  img: /img/fluid.png
+  img: /about/证件照1.jpg
   effect: false
 
 disable_top_img: false
-default_top_img:
-index_img: /img/home-hero.png
+default_top_img: /img/site-hero-desktop-v2.png
+index_img: /img/site-hero-desktop-v2.png
 index_site_info_top: 47%
 index_top_img_height: 42vh
-archive_img:
-tag_img:
-category_img:
+archive_img: /img/site-hero-desktop-v2.png
+tag_img: /img/site-hero-desktop-v2.png
+category_img: /img/site-hero-desktop-v2.png
 footer_img: false
 background:
 
@@ -126,6 +126,11 @@ footer:
   custom_text:
   copyright: true
 
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
 darkmode:
   enable: true
   button: true
@@ -157,3 +162,7 @@ inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
   bottom:
+
+CDN:
+  option:
+    busuanzi: https://cdn.osyb.cn/static/busuanzi/2.3/busuanzi.pure.mini.js

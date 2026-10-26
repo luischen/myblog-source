@@ -1,5 +1,6 @@
 ﻿const fs = require('fs');
 const path = require('path');
+const publicationDates = require('../config/manulism-publication-dates.json');
 
 const blogRoot = path.resolve(__dirname, '..');
 const knowledgeRoot = process.env.MANULISM_WORK_DIR || 'D:\\knowledgebase\\Manulism Work';
@@ -48,6 +49,10 @@ function parseFrontMatter(text) {
   return { data, body: text.slice(match[0].length) };
 }
 
+function shouldSyncNote(frontMatter) {
+  return String(frontMatter.status || '').trim().toLowerCase() === 'public';
+}
+
 function yamlString(value) {
   const escaped = String(value).replace(/"/g, '\\"');
   return `"${escaped}"`;
@@ -88,6 +93,18 @@ function normalizeLinkTarget(target) {
     .trim();
 }
 
+function publishedPermalink(target) {
+  const keys = Object.keys(publicationDates);
+  const matches = keys.filter((key) => {
+    const withoutExtension = key.replace(/\.md$/i, '');
+    return withoutExtension === target || withoutExtension.endsWith(`/${target}`);
+  });
+  if (matches.length !== 1) return null;
+  const source = matches[0];
+  const date = publicationDates[source].slice(0, 10).replace(/-/g, '/');
+  return encodeURI(`/${date}/manulism-work/${source.replace(/\.md$/i, '')}/`);
+}
+
 function convertObsidianLinks(body) {
   return body.replace(/!?(\[\[([^\]]+)\]\])/g, (full, bracketed, inner) => {
     if (full.startsWith('!')) return full;
@@ -95,7 +112,7 @@ function convertObsidianLinks(body) {
     const label = (rawAlias || rawTarget).trim();
     const target = normalizeLinkTarget(rawTarget);
     if (!target || target.startsWith('#')) return label;
-    return `[${label}](/${target}/)`;
+    return `[${label}](${publishedPermalink(target) || `/${target}/`})`;
   });
 }
 
@@ -198,7 +215,7 @@ function buildPost(file) {
   const frontMatter = [
     '---',
     `title: ${yamlString(title)}`,
-    `date: ${formatDate(stat.birthtime || stat.mtime)}`,
+    `date: ${publicationDates[relative.replace(/\\/g, '/')] || formatDate(stat.birthtime || stat.mtime)}`,
     `updated: ${formatDate(stat.mtime)}`,
     'categories:',
     `  - ${categoryName}`,
@@ -225,6 +242,9 @@ function main() {
     const fullDir = path.join(knowledgeRoot, dir);
     if (!fs.existsSync(fullDir)) continue;
     for (const file of walk(fullDir)) {
+      const parsed = parseFrontMatter(fs.readFileSync(file, 'utf8'));
+      if (!shouldSyncNote(parsed.data)) continue;
+
       const relative = path.relative(knowledgeRoot, file);
       const outputFile = path.join(outputRoot, relative);
       ensureDir(path.dirname(outputFile));
@@ -236,6 +256,6 @@ function main() {
   console.log(`Synced ${count} Manulism Work notes to ${path.relative(blogRoot, outputRoot)}`);
 }
 
-module.exports = { buildPost, convertObsidianSyntax };
+module.exports = { parseFrontMatter, shouldSyncNote, buildPost, convertObsidianLinks, convertObsidianSyntax };
 
 if (require.main === module) main();
