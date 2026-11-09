@@ -16,7 +16,7 @@ source/_posts/manulism-work
 scripts/sync-manulism-work.js
 ```
 
-公开工作笔记的发布日期固定在 `config/manulism-publication-dates.json`。现有 31 篇按每月一篇排列，覆盖 2024 年 4 月至 2026 年 10 月；重新同步不会改写这些日期。新增公开笔记时，应先在日期表中安排发布月份。独立博客文章沿用各自原有日期。
+工作笔记的发布日期固定在 `config/manulism-publication-dates.json`。日期表保留 31 篇笔记原有的月度安排，覆盖 2024 年 4 月至 2026 年 10 月；当前其中 26 篇为公开状态，5 篇已改为私有状态并从博客撤下。重新同步不会改写这些日期。新增公开笔记时，应先在日期表中安排发布月份。独立博客文章沿用各自原有日期。
 
 同步后，每篇笔记会自动补充 Hexo front matter，并归入分类：
 

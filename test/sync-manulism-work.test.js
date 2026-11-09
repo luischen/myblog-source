@@ -51,7 +51,16 @@ function testPublicNoteLinksUsePublishedPermalinks() {
   );
 }
 
+function testPrivateNoteLinksBecomePlainText() {
+  const { convertObsidianLinks } = loadSyncModule();
+  assert.strictEqual(
+    convertObsidianLinks('详见[[01 曲线分析系统领域知识扩展|业务扩展笔记]]'),
+    '详见业务扩展笔记'
+  );
+}
+
 testOnlyPublicNotesAreSyncable();
 testScheduledPublicationDateSurvivesSync();
 testPublicNoteLinksUsePublishedPermalinks();
+testPrivateNoteLinksBecomePlainText();
 console.log('sync-manulism-work tests passed');

@@ -93,14 +93,17 @@ function normalizeLinkTarget(target) {
     .trim();
 }
 
-function publishedPermalink(target) {
+function publicationSource(target) {
   const keys = Object.keys(publicationDates);
   const matches = keys.filter((key) => {
     const withoutExtension = key.replace(/\.md$/i, '');
     return withoutExtension === target || withoutExtension.endsWith(`/${target}`);
   });
   if (matches.length !== 1) return null;
-  const source = matches[0];
+  return matches[0];
+}
+
+function publishedPermalink(source) {
   const date = publicationDates[source].slice(0, 10).replace(/-/g, '/');
   return encodeURI(`/${date}/manulism-work/${source.replace(/\.md$/i, '')}/`);
 }
@@ -112,7 +115,12 @@ function convertObsidianLinks(body) {
     const label = (rawAlias || rawTarget).trim();
     const target = normalizeLinkTarget(rawTarget);
     if (!target || target.startsWith('#')) return label;
-    return `[${label}](${publishedPermalink(target) || `/${target}/`})`;
+    const source = publicationSource(target);
+    if (source) {
+      const note = fs.readFileSync(path.join(knowledgeRoot, source), 'utf8');
+      if (!shouldSyncNote(parseFrontMatter(note).data)) return label;
+    }
+    return `[${label}](${source ? publishedPermalink(source) : `/${target}/`})`;
   });
 }
 
